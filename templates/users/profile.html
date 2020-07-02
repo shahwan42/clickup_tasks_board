@@ -34,21 +34,7 @@
             </p>
             {% endif %}
             {% endfor %}
-            <!-- <div class="row">
-              <div class="col-md-6">
-                <p>
-                  <label>البريد الالكتروني</label>
-                  <input type="email" value="{{ request.user.email }}">
-                </p>
-              </div>
-              <div class="col-md-6">
-                <p>
-                  <label>كلمة المرور</label>
-                  <input type="password" value="كلمة المرور">
-                </p>
-              </div>
 
-            </div> -->
             <input type="submit" class="cust_btn" value="حفظ">
           </div>
         </form>
@@ -82,26 +68,6 @@
         {% endif %}
         {% endfor %}
 
-        <!-- <div class="row">
-          {% for field in form %}
-          {% if field.name == "email" %}
-          <div class="col-md-6">
-            <p>
-              <label>البريد الالكتروني</label>
-              <input type="email" value="{{ request.user.email }}" disabled>
-            </p>
-          </div>
-          {% endif %}
-          {% endfor %}
-
-          <div class="col-md-6">
-            <p>
-              <label>كلمة المرور</label>
-              <input type="password" value="كلمة المرور" disabled>
-            </p>
-          </div>
-
-        </div> -->
         <div class="row d-flex justify-content-between px-3">
           <a href="#" class="cust_btn" data-toggle="modal" data-target=".edit_profile">تعديل</a>
           <a href="{% url 'password_change' %}" class="text-primary mt-3">تغيير كلمة المرور</a>
