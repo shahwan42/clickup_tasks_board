@@ -131,7 +131,7 @@ class TaskUpdatedWebhook(View):
             # print(request.body)
             remote_task = json.loads(request.body)
             if not remote_task.get("task_id"):
-                return JsonResponse(status=400)
+                return JsonResponse({"detail": "Update failed"}, status=400)
 
             print(remote_task)
             logger.info(remote_task)
@@ -148,4 +148,4 @@ class TaskUpdatedWebhook(View):
                         task.status = history_items[0].get("after").get("status")
 
                 task.save()
-        return JsonResponse({}, status=200)
+        return JsonResponse({"detail": "Updated successfully!"}, status=200)
