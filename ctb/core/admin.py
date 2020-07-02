@@ -96,6 +96,12 @@ def import_custom_fields(modeladmin, request, queryset):
 import_custom_fields.short_description = "Import custom fields"
 
 
+def activate(modeladmin, request, queryset):
+    for obj in queryset:
+        obj.is_active = True
+        obj.save()
+
+
 # ============================= Admins
 class TeamAdmin(admin.ModelAdmin):
     list_display = ["clickup_id", "name", "is_active"]
@@ -111,6 +117,7 @@ class FolderAdmin(admin.ModelAdmin):
     inlines = (ListInline,)
     list_display = ["clickup_id", "name", "is_active"]
     readonly_fields = ("clickup_id", "name", "description", "space")
+    actions = [activate]
 
 
 class ListAdmin(admin.ModelAdmin):
@@ -123,7 +130,7 @@ class ListAdmin(admin.ModelAdmin):
         "folder",
         "custom_fields_imported",
     )
-    actions = [import_custom_fields]
+    actions = [activate, import_custom_fields]
 
 
 class TaskAdmin(admin.ModelAdmin):
