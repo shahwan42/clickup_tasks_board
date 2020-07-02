@@ -24,6 +24,10 @@ from ctb.core.views import NewTask, TaskUpdatedWebhook, ListCustomFields
 from ctb.users.views import UserTasks, Profile, ChangePassword
 
 urlpatterns = [
+    path("jet/", include("jet.urls", "jet")),  # Django JET URLS
+    path(
+        "jet/dashboard/", include("jet.dashboard.urls", "jet-dashboard")
+    ),  # Django JET dashboard URLS
     path("admin/", admin.site.urls),
     path("", Home.as_view(), name="home"),
     path("task_updated", TaskUpdatedWebhook.as_view(), name="task_updated"),
